@@ -85,6 +85,8 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+        @auth
         <script
             async type="text/javascript"
             src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=TR5Gti"
@@ -97,6 +99,7 @@
                 '$email' : '{{ Auth::user()->email }}'
             }]);
         </script>
+        @endauth
     </div>
 </body>
 </html>

@@ -13,9 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::middleware('auth')->group(function (){
+	Route::get('/', 'ContactsController@index')->name('contacts');
+	Route::post('/', 'ContactsController@persist');	
+});
 
 Auth::routes();
 
-Route::get('/', 'ContactsController@index')->name('contacts');
-Route::post('/', 'ContactsController@persist');
+
+
