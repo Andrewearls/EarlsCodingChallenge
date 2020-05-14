@@ -16,10 +16,10 @@ class Contact extends Model
     ];
 
     /**
-     * The roles that belong to the user.
+     * The users that can access the contact.
      */
-    public function contacts()
+    public function users()
     {
-        return $this->belongsToMany('App\Contact');
+        return $this->belongsToMany('App\User');
     }
 }
