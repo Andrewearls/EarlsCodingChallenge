@@ -42,6 +42,6 @@ class User extends Authenticatable
      */
     public function contacts()
     {
-        return $this->belongsToMany('App\Contact');
+        return $this->belongsToMany('App\Contact', 'user_contact');
     }
 }
