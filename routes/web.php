@@ -18,3 +18,4 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'ContactsController@index')->name('contacts');
+Route::post('/', 'ContactsController@persist');
