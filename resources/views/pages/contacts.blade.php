@@ -31,7 +31,15 @@
 						
 					</form>
 				</div>
-			</div>
+			</div> 
+			<div class="row">
+				<!-- End of card -->
+				@foreach($contacts as $contact)					
+					<div class="col-lg-6">
+						@include('cards.contact')
+					</div>
+				@endforeach
+			</div>	
 		</div>
 	</div>
 	
