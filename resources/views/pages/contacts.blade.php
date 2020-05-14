@@ -18,9 +18,9 @@
 								<label>Phone</label><br>
 							</div>
 							<div class="col-lg-3">
-								<input type="text" name="first_name">
-								<input type="email" name="email">
-								<input type="text" name="phone">
+								<input type="text" name="first_name" value="{{old('first_name', '')}}">
+								<input type="email" name="email" value="{{old('email', '')}}">
+								<input type="text" name="phone" value="{{old('phone', '')}}">
 							</div>
 						</div>
 						<div class="row justify-content-center">

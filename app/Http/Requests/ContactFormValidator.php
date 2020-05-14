@@ -14,7 +14,7 @@ class ContactFormValidator extends FormRequest
     public function authorize()
     {
         //user has already been authorized in routes
-        return ture;
+        return true;
     }
 
     /**
