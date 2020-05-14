@@ -9,9 +9,13 @@ use Illuminate\Support\Facades\Auth;
 
 class ContactsController extends Controller
 {
+
     public function index()
     {
-    	return view('pages.contacts');
+    	$user = Auth::user();
+    	return view('pages.contacts', [
+    		'contacts' => $user->contacts,
+    	]);
     }
 
     /*
@@ -23,6 +27,6 @@ class ContactsController extends Controller
     	$validated = $request->validated();
     	$contact = Contact::create($validated);
     	$user->contacts()->attach($contact);
-    	return $user->contacts;
+    	return redirect()->route('contacts');
     }
 }
