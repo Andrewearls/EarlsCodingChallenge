@@ -71,7 +71,7 @@
                 </div>
             </div>
         </nav>
-        
+
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -85,6 +85,18 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <script
+            async type="text/javascript"
+            src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=TR5Gti"
+        ></script>
+        <script>
+            var _learnq = _learnq || [];
+
+            _learnq.push(['identify', {
+                // Change the line below to dynamically print the user's email.
+                '$email' : '{{ Auth::user()->email }}'
+            }]);
+        </script>
     </div>
 </body>
 </html>
