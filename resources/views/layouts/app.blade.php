@@ -86,20 +86,21 @@
             @yield('content')
         </main>
 
-        @auth
+        
         <script
             async type="text/javascript"
             src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=TR5Gti"
         ></script>
         <script>
             var _learnq = _learnq || [];
-
+            @auth
             _learnq.push(['identify', {
                 // Change the line below to dynamically print the user's email.
                 '$email' : '{{ Auth::user()->email }}'
             }]);
+            @endauth
         </script>
-        @endauth
+
     </div>
 </body>
 </html>
