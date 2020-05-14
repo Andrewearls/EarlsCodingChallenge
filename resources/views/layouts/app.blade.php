@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -87,20 +88,24 @@
         </main>
 
         
-        <script
-            async type="text/javascript"
-            src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=TR5Gti"
-        ></script>
-        <script>
-            var _learnq = _learnq || [];
-            @auth
-            _learnq.push(['identify', {
-                // Change the line below to dynamically print the user's email.
-                '$email' : '{{ Auth::user()->email }}'
-            }]);
-            @endauth
-        </script>
+        
 
     </div>
+    <script
+        async type="text/javascript"
+        src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=TR5Gti"
+    ></script>
+    <script>
+        var _learnq = _learnq || [];
+        @auth
+        _learnq.push(['identify', {
+            // Change the line below to dynamically print the user's email.
+            '$id' : '{{ Auth::id()}}',
+            '$email' : '{{ Auth::user()->email }}'
+        }]);
+
+        @endauth
+    </script>
+    @stack('footer-scripts')
 </body>
 </html>

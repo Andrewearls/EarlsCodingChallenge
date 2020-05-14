@@ -24,8 +24,8 @@
 							</div>
 						</div>
 						<div class="row justify-content-center">
-							<div class="col-lg-3">
-								<input type="submit" name="submit">
+							<div class="col-lg-5">
+								<input type="submit" name="submit"><button type="button" id="trackingButton">The tracking button</button>
 							</div>
 						</div>
 						
@@ -45,3 +45,18 @@
 	
 </div>
 @endsection
+
+@push('footer-scripts')
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('#trackingButton').click(function () {
+			_learnq.push(['track', 'Tracking Button', {
+	            // Change the line below to dynamically print the user's email.
+	            'button' : 'The Button Was CLICKED!',
+	            'when' : Date(),
+	        }]);
+		});
+	});
+	
+</script>
+@endpush
