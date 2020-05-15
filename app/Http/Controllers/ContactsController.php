@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ContactFormValidator;
 use App\Contact;
+use App\Events\ContactCreated;
 use Illuminate\Support\Facades\Auth;
 
 class ContactsController extends Controller
@@ -27,6 +28,8 @@ class ContactsController extends Controller
     	$validated = $request->validated();
     	$contact = Contact::create($validated);
     	$user->contacts()->attach($contact);
+    	event(new ContactCreated($contact));
+    	
     	return redirect()->route('contacts');
     }
 }
