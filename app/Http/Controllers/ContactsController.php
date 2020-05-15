@@ -26,10 +26,9 @@ class ContactsController extends Controller
     {
     	$user = Auth::user();
     	$validated = $request->validated();
-    	$contact = Contact::create($validated);
-    	$user->contacts()->attach($contact);
+    	$contact = $user->contacts()->create($validated);
     	event(new ContactCreated($contact));
-    	
+
     	return redirect()->route('contacts');
     }
 }

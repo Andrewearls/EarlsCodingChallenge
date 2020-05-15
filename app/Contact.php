@@ -18,8 +18,8 @@ class Contact extends Model
     /**
      * The users that can access the contact.
      */
-    public function users()
+    public function user()
     {
-        return $this->belongsToMany('App\User', 'user_contact');
+        return $this->belongsTo('App\User');
     }
 }
