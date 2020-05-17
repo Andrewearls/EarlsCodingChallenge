@@ -9,7 +9,7 @@
 					Contacts
 				</div>
 				<div class="card-body">
-					<form action="{{route('import-csv')}}" method="post">
+					<form action="{{route('import-csv')}}" method="post" enctype="multipart/form-data">
 						@csrf
 						<div class="row justify-content-center">
 							<div class="col-lg-4">
