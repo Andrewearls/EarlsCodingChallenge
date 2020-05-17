@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth')->group(function (){
 	Route::get('/', 'ContactsController@index')->name('contacts');
 	Route::post('/', 'ContactsController@persist');	
+	Route::get('/import/CSV', 'CSVController@index')->name('import-csv');
+	Route::post('/import/CSV', 'CSVController@persist');
 });
 
 Auth::routes();
