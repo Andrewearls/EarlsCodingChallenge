@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCSVFilesTable extends Migration
+class CreateCsvFilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCSVFilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('csv_file', function (Blueprint $table) {
+        Schema::create('csv_files', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->longText('data');
@@ -28,6 +28,6 @@ class CreateCSVFilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('csv_file');
+        Schema::dropIfExists('csv_files');
     }
 }
