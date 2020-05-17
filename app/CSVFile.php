@@ -14,4 +14,9 @@ class CsvFile extends Model
     protected $fillable = [
         'name', 'data',
     ];
+
+    public function length()
+    {
+    	return count(file($this->data));
+    }
 }

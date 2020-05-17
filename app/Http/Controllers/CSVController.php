@@ -17,10 +17,21 @@ class CSVController extends Controller
     {
     	$validated = $request->validated();
     	// dd($request->file('csv')->getClientOriginalName());
-    	$csv = CSVFile::create([
+
+    	$file = $request->file('csv');
+    	$fileData = array();
+    	if (($handle = fopen($file, "r")) !== FALSE) {
+    		while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+    			$fileData[] = implode(',', $data);
+    			// $row++;
+    		}
+    	}
+
+    	$csv = CSVFile::Create(
     		'name' => $request->file('csv')->getClientOriginalName(),
-    		'data' => $request->file('csv'),
+    		'data' => implode('\n', $fileData),
     	]);
+
     	return CSVFile::all();
     }
 }
