@@ -17,6 +17,7 @@ class CreateCsvFilesTable extends Migration
             $table->id();
             $table->string('name');
             $table->longText('data');
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }

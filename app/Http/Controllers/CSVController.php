@@ -16,22 +16,38 @@ class CSVController extends Controller
     public function persist(Validator $request)
     {
     	$validated = $request->validated();
-    	// dd($request->file('csv')->getClientOriginalName());
 
-    	$file = $request->file('csv');
-    	$fileData = array();
-    	if (($handle = fopen($file, "r")) !== FALSE) {
-    		while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-    			$fileData[] = implode(',', $data);
-    			// $row++;
-    		}
+    	// $file = $request->file('csv');
+    	// $fileData = array();
+    	// if (($handle = fopen($file, "r")) !== FALSE) {
+    	// 		while (($data = fgetcsv($handle, count(file($file)), ",")) !== FALSE) {
+    	// 			$fileData[] = $data;
+    	// 		}
+    	// }
+
+    	// $csv = CSVFile::create([
+    	// 		'name' => $request->file('csv')->getClientOriginalName(),
+    	// 		'data' => serialize($fileData),
+    	// ]);
+
+    	$file = CSVFile::find(1)->first();
+
+    	foreach ($fileData as $row) {
+    		if (!filter_var($row[1], FILTER_VALIDATE_EMAIL)) {
+			  	continue;
+			} elseif (!is_numeric($row[2])) {
+				continue;
+			}
+    		Contact::create([
+    			'first_name' = $row[0],
+    			'email' = $row[1],
+    			'phone' = $row[2],
+    ]);
     	}
 
-    	$csv = CSVFile::Create(
-    		'name' => $request->file('csv')->getClientOriginalName(),
-    		'data' => implode('\n', $fileData),
-    	]);
 
-    	return CSVFile::all();
+
+
+    	return is_numeric(unserialize($file->data)[1][2]);
     }
 }
