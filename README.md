@@ -10,7 +10,7 @@ Installation Instructions:
 
 Clone the github repo from the link above.
 Or download the files from my google drive:
-https://drive.google.com/open?id=1teJGBxBmaqTEqtRlzW4AcRMRpzBPbwdi
+https://drive.google.com/file/d/1UL90iNHg2SMpJUGvG5-HfttEAH3YJcAq/view?usp=sharing
 
 create a database in mysql
 
