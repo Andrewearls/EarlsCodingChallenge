@@ -3,9 +3,19 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Events\ContactSaved;
 
 class Contact extends Model
 {
+    /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'saved' => ContactSaved::class,
+    ];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -22,4 +32,5 @@ class Contact extends Model
     {
         return $this->belongsTo('App\User');
     }
+
 }
