@@ -21,18 +21,10 @@ class CSVController extends Controller
     	$validated = $request->validated();
     	$user = Auth::user();
     	$file = $request->file('csv');
-    	$fileData = array();
-
-        //sanitize csv file
-    	if (($handle = fopen($file, "r")) !== FALSE) {
-    			while (($data = fgetcsv($handle, count(file($file)), ",")) !== FALSE) {
-    				$fileData[] = $data;
-    			}
-    	}
-
+       
     	$user->files()->create([
     			'name' => $request->file('csv')->getClientOriginalName(),
-    			'data' => serialize($fileData),
+    			'data' => serialize(file($file)),
     	]);
 
     	return redirect()->route('contacts');

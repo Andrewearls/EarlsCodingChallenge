@@ -40,11 +40,18 @@ class ProcessCsvFile implements ShouldQueue
         $user = $file->user;
 
         foreach ($fileData as $row) {
+            //sanitize data
+            $row = preg_replace('~[\r\n]+~', '', $row);
+            $row = explode(',', $row);
+
+            //check for improper fields
             if (!filter_var($row[1], FILTER_VALIDATE_EMAIL)) {
                 continue;
             } elseif (!is_numeric($row[2])) {
                 continue;
             }
+            
+            //create new contact
             $user->contacts()->create([
                 'first_name' => $row[0],
                 'email' => $row[1],
@@ -52,6 +59,6 @@ class ProcessCsvFile implements ShouldQueue
             ]);
         }
 
-        
+
     }
 }
