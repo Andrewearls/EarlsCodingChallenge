@@ -12,11 +12,19 @@ class CsvFile extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'data',
+        'name', 'data', 'user_id',
     ];
 
     public function length()
     {
     	return count(file($this->data));
+    }
+
+    /**
+     * The users that own the csv file.
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
 }

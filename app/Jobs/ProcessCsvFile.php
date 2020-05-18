@@ -26,12 +26,32 @@ class ProcessCsvFile implements ShouldQueue
     }
 
     /**
-     * Execute the job.
-     *
+     * Process each line in the file
+     * Filter for valid email and numeric phone numbers
+     * Create contact for each valid line
+     * Update Klaviyo for each valid contact
+     * 
      * @return void
      */
     public function handle()
     {
-        //
+        $file = $this->file;
+        $fileData = unserialize($file->data);
+        $user = $file->user;
+
+        foreach ($fileData as $row) {
+            if (!filter_var($row[1], FILTER_VALIDATE_EMAIL)) {
+                continue;
+            } elseif (!is_numeric($row[2])) {
+                continue;
+            }
+            $user->contacts()->create([
+                'first_name' => $row[0],
+                'email' => $row[1],
+                'phone' => $row[2],
+            ]);
+        }
+
+        
     }
 }

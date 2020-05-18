@@ -44,4 +44,12 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Contact');
     }
+
+    /**
+     * The csv files that belong to the user.
+     */
+    public function files()
+    {
+        return $this->hasMany('App\CsvFile');
+    }
 }
