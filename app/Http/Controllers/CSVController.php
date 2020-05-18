@@ -7,6 +7,7 @@ use App\Http\Requests\CSVFormValidator as Validator;
 use Illuminate\Support\Facades\Auth;
 use App\CSVFile;
 use App\Contact;
+use App\Jobs\ProcessCsvFile;
 
 class CSVController extends Controller
 {
@@ -21,6 +22,8 @@ class CSVController extends Controller
     	$user = Auth::user();
     	$file = $request->file('csv');
     	$fileData = array();
+
+        //sanitize csv file
     	if (($handle = fopen($file, "r")) !== FALSE) {
     			while (($data = fgetcsv($handle, count(file($file)), ",")) !== FALSE) {
     				$fileData[] = $data;

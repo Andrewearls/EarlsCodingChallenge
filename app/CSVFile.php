@@ -3,9 +3,19 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Events\CsvFileRecieved;
 
 class CsvFile extends Model
 {
+    /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'saved' => CsvFileRecieved::class,
+    ];
+
     /**
      * The attributes that are mass assignable.
      *

@@ -21,6 +21,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\ContactSaved' => [
             'App\Listeners\SendKlaviyoContactInfo'
         ],
+        'App\Events\CsvFileRecieved' => [
+            'App\Listeners\HandleCsvFile'
+        ],
     ];
 
     /**
