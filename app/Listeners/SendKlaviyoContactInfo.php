@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Events\ContactCreated;
+use App\Events\ContactSaved;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Klaviyo;
@@ -25,7 +25,7 @@ class SendKlaviyoContactInfo
      * @param  ContactCreated  $event
      * @return void
      */
-    public function handle(ContactCreated $event)
+    public function handle(ContactSaved $event)
     {
         $tracker = new Klaviyo("TR5Gti");
         $tracker->track(

@@ -18,7 +18,7 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-        'App\Events\ContactCreated' => [
+        'App\Events\ContactSaved' => [
             'App\Listeners\SendKlaviyoContactInfo'
         ],
     ];
