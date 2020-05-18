@@ -96,8 +96,7 @@
     </div>
     <script
         async type="text/javascript"
-        src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=TR5Gti"
-    ></script>
+        src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id={{env('KLAVIYO_API_KEY', 'TR5Gti')}}"></script>
     <script>
         var _learnq = _learnq || [];
         @auth

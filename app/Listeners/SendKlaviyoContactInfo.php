@@ -27,7 +27,7 @@ class SendKlaviyoContactInfo
      */
     public function handle(ContactSaved $event)
     {
-        $tracker = new Klaviyo("TR5Gti");
+        $tracker = new Klaviyo(env('KLAVIYO_API_KEY', "TR5Gti"));
         $tracker->track(
             'New Contact',
             [
